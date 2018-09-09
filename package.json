@@ -9,9 +9,10 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
+    "install": "todo",
     "client": "cd client && yarn run start",
     "dev": "concurrently \"yarn run client\" \"yarn run server\" ",
-    "prod": "SET NODE_ENV=production & node index.js",
+    "prod": "SET NODE_ENV='production' & node index.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "license": "MIT",
