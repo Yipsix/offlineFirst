@@ -1,20 +1,19 @@
 import * as React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import lightTheme from '../src/style/theme';
+import lightTheme from '../src/styles/theme';
+import DataContainer from './pages/dataContainer';
 // import login from './components/login';
 
 class App extends React.Component {
-
-  handleClick(event: any) {
-      console.log('clicked');
-  }
   
   public render() {
-
+    const style = {
+      height: '100%',
+    };
     return (
-      <div className="App">
+      <div style={style} className="App">
         <MuiThemeProvider muiTheme={lightTheme}>
-          hello there
+          <DataContainer/>
         </MuiThemeProvider>
       </div>
     );

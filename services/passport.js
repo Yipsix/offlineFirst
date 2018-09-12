@@ -6,6 +6,8 @@ const keys = require('../config/keys');
 
 const User = mongoose.model('users');
 
+const options = {};
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -47,3 +49,9 @@ passport.use(new BnetStrategy({
     console.log(profile)
     return done(null, profile);
 }));
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+      return username;
+    }
+  ));

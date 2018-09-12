@@ -12,7 +12,6 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
-/*
 app.use(function (req, res, next) {
     console.log(process.env.NODE_ENV);
     next()
@@ -25,11 +24,10 @@ app.use(
         keys: [keys.cookieKey]
     })
 );
-*/
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-//require('./routes/authRoutes')(app);
+require('./routes/authRoutes')(app);
 //require('./routes/billingRoutes')(app);
 //require('./routes/surveyRoutes')(app);
 

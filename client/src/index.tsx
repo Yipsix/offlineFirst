@@ -3,9 +3,9 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 // import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import configureStore from "../src/store/configureStore";
+import configureStore from './store/store';
 
-const store = configureStore();
+const store = configureStore(window.initialReduxState);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -15,4 +15,3 @@ ReactDOM.render(
 );    
    
 // registerServiceWorker();
- 
