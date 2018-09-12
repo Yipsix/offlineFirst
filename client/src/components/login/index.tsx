@@ -1,10 +1,11 @@
 import * as React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import { fetchUser } from '../../action-creators';
 
 export interface Props {
   user: string;
-  fetchUser: any;
+  fetchUser: typeof fetchUser;
 };
 
 class login extends React.Component<Props, {}> {

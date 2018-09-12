@@ -1,7 +1,7 @@
 import * as React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import lightTheme from '../src/style/theme';
-import login from './components/login';
+// import login from './components/login';
 
 class App extends React.Component {
 
@@ -11,14 +11,10 @@ class App extends React.Component {
   
   public render() {
 
-    const style = {
-      margin: 15,
-     };
-
     return (
       <div className="App">
         <MuiThemeProvider muiTheme={lightTheme}>
-         <login/>
+          hello there
         </MuiThemeProvider>
       </div>
     );

@@ -3,11 +3,9 @@ import * as ReactDOM from 'react-dom';
 import App from './App';
 // import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './reducers';
-import DevTools from './containers/devtools/devtools';
+import configureStore from "../src/store/configureStore";
 
-const store = createStore(rootReducer, DevTools.instrument());
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
@@ -17,3 +15,4 @@ ReactDOM.render(
 );    
    
 // registerServiceWorker();
+ 
