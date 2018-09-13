@@ -52,6 +52,6 @@ passport.use(new BnetStrategy({
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-      return username;
+        return done(null, username);
     }
   ));
