@@ -1,23 +1,64 @@
 import * as React from 'react';
-import { signIn } from '../store/login/actions';
+import { signOut } from '../store/auth/actions';
 import { ApplicationState } from '../store/store';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 interface Props {
     loading: boolean;
     isAuthenticated: boolean;
     user: string;
-    signIn: typeof signIn;
+    signOut: typeof signOut;
 }
   
 class DataCaller extends React.Component<Props> {
+    handleClick(event: any) {
+        console.log('clicked');
+    }
 
-  public render() {
+    public render() {
+    const styleH = {
+        height: '100%',
+        alignContent: 'center',
+    };
+    const style = {
+        borderColor: '#d6d7da',
+        borderRadius: 8,
+        borderWidth: 0.5,
+        padding: 50,
+        margin: 20,
+        alignContent: 'center',
+        width: '200px'
+        
+    };
 
     return (
-      <div>
-          logged in
+      <div style={styleH}>
+          <Typography align="center" variant="title" color="inherit">
+                        welcome: {this.props.user}
+            </Typography>
+            <Grid
+                container={true}
+                alignItems="center"
+                justify="center"
+            >
+            <Paper style={style}>
+                <Input
+                    defaultValue="send a message"
+                    inputProps={{
+                    'aria-label': 'Description',
+                    }}
+                />
+                <br />
+                <br />
+                 <Button onClick={(event) => this.handleClick(event)} variant="outlined">Send</Button>
+            </Paper>
+            </Grid>
       </div>
     );
   }
@@ -30,7 +71,7 @@ const mapStateToProps = ({ auth }: ApplicationState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    signIn: () => dispatch(signIn())
+    signOut: () => dispatch(signOut())
 });
 
 export default connect(

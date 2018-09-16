@@ -5,7 +5,7 @@ import { AuthState, typeKeys } from './types';
 const initialState: AuthState = {
   loading: false,
   isAuthenticated: false,
-  user: 'none'
+  user: ''
 };
 
 // Thanks to Redux 4's much simpler typings, we can take away a lot of typings on the reducer side,
@@ -19,7 +19,16 @@ const reducer: Reducer<AuthState> = (state = initialState, action) => {
       return { ...state, loading: false, isAuthenticated: true, user: 'jesper' };
     }
     case typeKeys.SIGNIN_FAIL: {
-      return { ...state, loading: false, isAuthenticated: false, user: 'none' };
+      return { ...state, loading: false, isAuthenticated: false, user: '' };
+    }
+    case typeKeys.SIGNOUT: {
+      return { ...state, loading: true };
+    }
+    case typeKeys.SIGNOUT_SUCCESS: {
+      return { ...state, loading: false, isAuthenticated: false, user: '' };
+    }
+    case typeKeys.SIGNOUT_FAIL: {
+      return { ...state, loading: false, isAuthenticated: true, user: 'jesper' };
     }
     default: {
       return state;

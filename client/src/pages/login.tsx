@@ -1,7 +1,7 @@
 import * as React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import { signIn } from '../store/login/actions';
+import { signIn } from '../store/auth/actions';
 import { ApplicationState } from '../store/store';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
@@ -18,7 +18,7 @@ class Login extends React.Component<Props> {
 
   handleClick(event: any) {
     console.log('clicked');
-    this.props.signIn();
+    this.props.signIn('asd', 'sad');
   }
 
   public render() {
@@ -60,7 +60,7 @@ const mapStateToProps = ({ auth }: ApplicationState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    signIn: () => dispatch(signIn())
+    signIn: (user: string, pass: string) => dispatch(signIn(user, pass))
 });
 
 export default connect(

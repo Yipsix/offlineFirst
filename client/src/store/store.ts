@@ -1,11 +1,13 @@
-import { combineReducers, Dispatch, Action, AnyAction } from 'redux';
+import { combineReducers, Dispatch, Action, AnyAction, compose } from 'redux';
 import { all, fork } from 'redux-saga/effects';
 import createSagaMiddleware from 'redux-saga';
-import loginSaga from './login/sagas';
-import { authReducer } from './login/reducer';
-import { AuthState } from './login/types';
+import loginSaga from './auth/sagas';
+import { authReducer } from './auth/reducer';
+import { AuthState } from './auth/types';
 import { Store, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { offline } from '@redux-offline/redux-offline';
+import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 
 // The top-level state object
 export interface ApplicationState {
@@ -41,7 +43,10 @@ export default function configureStore(initialState: ApplicationState): Store<Ap
   // We'll create our store with the combined reducers/sagas, and the initial Redux state that
   // we'll be passing from our entry point.
   const store = createStore(rootReducer, initialState,
-    composeEnhancers(applyMiddleware(sagaMiddleware))
+    composeEnhancers(compose(
+      applyMiddleware(sagaMiddleware),
+      offline(offlineConfig)
+    ))
   );
 
   // Don't forget to run the root saga, and return the store object.
