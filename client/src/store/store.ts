@@ -3,7 +3,9 @@ import { all, fork } from 'redux-saga/effects';
 import createSagaMiddleware from 'redux-saga';
 import loginSaga from './auth/sagas';
 import { authReducer } from './auth/reducer';
+import { saveReducer } from './bailiffBook/reducer';
 import { AuthState } from './auth/types';
+import { SaveState } from './bailiffBook/types';
 import { Store, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { offline } from '@redux-offline/redux-offline';
@@ -12,6 +14,7 @@ import offlineConfig from '@redux-offline/redux-offline/lib/defaults';
 // The top-level state object
 export interface ApplicationState {
   auth: AuthState;
+  save: SaveState;
 }
 
 // Additional props for connected React components. This prop is passed by default with `connect()`
@@ -23,7 +26,8 @@ export interface ConnectedReduxProps<A extends Action = AnyAction> {
 // using the reducer with the matching name. It's important that the names match exactly, and that
 // the reducer acts on the corresponding ApplicationState property type.
 const rootReducer = combineReducers<ApplicationState>({
-  auth: authReducer
+  auth: authReducer,
+  save: saveReducer
 });
 
 // Here we use `redux-saga` to trigger actions asynchronously. `redux-saga` uses something called a

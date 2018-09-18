@@ -8,7 +8,7 @@ import axios from 'axios';
 function* handleLogin(action: any) {
     try {
         // To call async functions, use redux-saga's `call()`.
-        const res = yield axios.get('/hello');
+        const res = yield axios.post('/api/login', action.payload);
 
         if (res.error) {
           console.log('ouch1');
@@ -29,8 +29,7 @@ function* handleLogin(action: any) {
 function* handlelogout(action: any) {
   try {
       // To call async functions, use redux-saga's `call()`.
-      const res = yield axios.get('/hello');
-      yield put(signOutSuccess(res));
+      yield put(signOutSuccess(''));
 
     } catch (err) {
       console.log('ouch2');

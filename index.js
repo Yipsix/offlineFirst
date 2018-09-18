@@ -26,12 +26,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/hello', (req, res)=> {
-    res.send('hello');
+app.post('/api/save', (req, res)=> {
+    console.log('message: ',req);
+    res.send(req.user);
 });
 
-app.post('/api/book', (req, res)=> {
-    res.send('gotit');
+app.post('/api/login', (req, res)=> {
+    console.log('login: ',req.body.user);
+    res.send(req.body.user);
 });
 
 require("./routes/authRoutes")(app);

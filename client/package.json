@@ -3,13 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/auth/local": {
+    "/api/save": {
       "target": "http://localhost:5000"
     },
-    "/hello": {
-      "target": "http://localhost:5000"
-    },
-    "/api/book": {
+    "/api/login": {
       "target": "http://localhost:5000"
     }
   },

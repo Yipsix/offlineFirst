@@ -48,15 +48,19 @@ class DataCaller extends React.Component<Props> {
                 justify="center"
             >
             <Paper style={style}>
-                <Input
-                    defaultValue="send a message"
-                    inputProps={{
-                    'aria-label': 'Description',
-                    }}
-                />
-                <br />
-                <br />
-                 <Button onClick={(event) => this.handleClick(event)} variant="outlined">Send</Button>
+                <form id="outputForm" method="post" action="/api/login">
+                    <Input 
+                        id="messageInput"
+                        defaultValue="send a message"
+                        inputProps={{
+                        'aria-label': 'Description',
+                        }}
+                    />
+                    <br />
+                    <br />
+                    <Button variant="outlined">Send</Button>
+                </form>
+                
             </Paper>
             </Grid>
       </div>

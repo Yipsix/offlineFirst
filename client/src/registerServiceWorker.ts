@@ -1,4 +1,4 @@
-// tslint:disable:no-console
+/* tslint:disable */
 // In production, we register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -18,7 +18,7 @@ const isLocalhost = Boolean(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
 );
-
+ 
 export default function register() {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
@@ -32,6 +32,11 @@ export default function register() {
       // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374
       return;
     }
+
+    window.addEventListener('fetch', function(event: any) {
+      console.log('Handling fetch event for', event.request.url);
+    
+    });
 
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
@@ -81,8 +86,7 @@ function registerValidSW(swUrl: string) {
           };
         }
       };
-    })
-    .catch(error => {
+    }).catch(error => {
       console.error('Error during service worker registration:', error);
     });
 }
